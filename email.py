@@ -41,13 +41,24 @@ We would sit down, and think which way
 To walk, and pass our long love’s day …'''))
 
 # Used to list emails
+
 def list_emails():
+
     print("INBOX!")
     for i, email in enumerate (inbox_list):
         print(f"{i + 1}. {email.subject_line}")
 
+def delete_email(index):
+
+    if (index - 1) <= len(inbox_list):
+        del(inbox_list[index - 1])
+        print("Email successfully deleted")
+    else:
+        print("Invalid email selected.")
 # Used to display selected email and its content
+
 def read_email(index):
+
     if (index - 1) <= len(inbox_list):
         email = inbox_list[index - 1]
         print(f'''/nFrom: {email.email_address}\n,
@@ -64,8 +75,8 @@ while True:
     user_choice = input('''\nWould you like to:
     1. Read an email
     2. View unread emails
-    3. Quit application
-
+    3. Delete Email
+    4. Quit application
     Enter selection: ''')
 
     if user_choice == "1":
@@ -85,8 +96,14 @@ while True:
                 print(f"{i}.{email.email_address} \n{email.subject_line}")
         else:
             print("No unread emails.")
-
     elif user_choice == "3":
+        list_emails()
+        try:
+            index = int(input("Enter the number of the email you want to delete: "))
+            read_email(index)
+        except ValueError as error:
+            print(error)
+    elif user_choice == "4":
         print("Goodbye!")
         break
 
