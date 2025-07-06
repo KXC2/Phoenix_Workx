@@ -44,7 +44,7 @@ To walk, and pass our long love’s day …'''))
 def list_emails():
     print("INBOX!")
     for i, email in enumerate (inbox_list):
-        print(f"{i + 1}. {email.email_address} \n{email.subject_line}")
+        print(f"{i + 1}. {email.subject_line}")
 
 # Used to display selected email and its content
 def read_email(index):
